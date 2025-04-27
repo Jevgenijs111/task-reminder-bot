@@ -63,9 +63,6 @@ def main():
                 if message_text.lower() in ["/start", "привет", "hello"]:
                     send_message(chat_id, "Бот на связи! 🚀")
                 else:
-                    send_message(chat_id, f"Ты написал: {message_text}")
-        time.sleep(2)
-
 if name == 'main':
     threading.Thread(target=morning_tasks).start()
     threading.Thread(target=reminder_tasks).start()
