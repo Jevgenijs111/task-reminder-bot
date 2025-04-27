@@ -1,4 +1,3 @@
-
 import requests
 import time
 from datetime import datetime, timedelta
@@ -38,8 +37,7 @@ def morning_tasks():
             if chat_id and message != "📋 Задачи на сегодня:\n":
                 send_message(chat_id, message)
         time.sleep(60)
-
-def reminder_tasks():
+        def reminder_tasks():
     while True:
         now = datetime.now()
         today = now.strftime('%Y-%m-%d')
@@ -66,8 +64,8 @@ def main():
                 else:
                     send_message(chat_id, f"Ты написал: {message_text}")
         time.sleep(2)
-        if name == 'main':
+
+if name == 'main':
     threading.Thread(target=morning_tasks).start()
     threading.Thread(target=reminder_tasks).start()
     main()
-    
