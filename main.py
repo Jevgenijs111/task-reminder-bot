@@ -37,8 +37,7 @@ def morning_tasks():
             if chat_id and message != "📋 Задачи на сегодня:\n":
                 send_message(chat_id, message)
         time.sleep(60)
-
-def reminder_tasks():
+ def reminder_tasks():
     while True:
         now = datetime.now()
         today = now.strftime('%Y-%m-%d')
@@ -63,7 +62,10 @@ def main():
                 if message_text.lower() in ["/start", "привет", "hello"]:
                     send_message(chat_id, "Бот на связи! 🚀")
                 else:
-if _name_ == '_main_':
+                    send_message(chat_id, f"Ты написал: {message_text}")
+        time.sleep(2)
+
+if name == 'main':
     threading.Thread(target=morning_tasks).start()
     threading.Thread(target=reminder_tasks).start()
     main()
