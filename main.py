@@ -53,3 +53,21 @@ def reminder_tasks():
 def main():
     global chat_id
     last_update_id = None
+    print("Бот запущен! ✅")
+    while True:
+        updates = get_updates(last_update_id)
+        if updates.get("result"):
+            for item in updates["result"]:
+                last_update_id = item["update_id"] + 1
+                chat_id = item["message"]["chat"]["id"]
+                message_text = item["message"]["text"]
+                if message_text.lower() in ["/start", "привет", "hello"]:
+                    send_message(chat_id, "Бот на связи! 🚀")
+                else:
+                    send_message(chat_id, f"Ты написал: {message_text}")
+        time.sleep(2)
+        if name == 'main':
+    threading.Thread(target=morning_tasks).start()
+    threading.Thread(target=reminder_tasks).start()
+    main()
+    
